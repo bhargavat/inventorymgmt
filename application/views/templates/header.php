@@ -1,3 +1,4 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
     <head>
         <meta charset="utf-8">
@@ -15,7 +16,7 @@
                         <li><a href="<?php echo base_url(); ?>about">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo base_url(); ?>login">Login</a></li>
+                        <li><a href="<?php echo base_url(); ?>">Login</a></li>
                     </ul>
                 </div>
             </div>
