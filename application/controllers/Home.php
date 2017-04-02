@@ -13,14 +13,16 @@ class Home extends CI_Controller {
         {
             $session_data = $this->session->userdata('logged_in');
             $data['email'] = $session_data['email'];
+            print $data['email'];
             $data['first_name'] = $session_data['first_name'];
             $data['last_name'] = $session_data['last_name'];
             $this->load->view('homeView', $data);
         }
         else
         {
+            echo "<script>console.log('error!');</script>";
             //If no session, redirect to login page
-            redirect('login', 'refresh');
+           // redirect('login', 'refresh');
         }
     }
 

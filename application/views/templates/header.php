@@ -4,22 +4,42 @@
         <meta charset="utf-8">
         <title>BackRoom</title>
         <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation"">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="<?php echo base_url(); ?>">BackRoom</a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#navbar-collapse-1">
+<!--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <div id="navbar">
+                <div class="collapse navbar-collapse id="navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="<?php echo base_url(); ?>about">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="<?php echo base_url(); ?>">Login</a></li>
+                        <?php
+                            if(isset($_SESSION['user_logged'])){ //
+                               $loginstatus = "Logout";
+                               $loc = base_url()."auth/logout";
+                            }else{
+                                $loginstatus = "Login";
+                                $loc = base_url();
+                            }
+                        ?>
+                        <li>
+                            <a href="<?php echo $loc ?>">
+                                <?php echo $loginstatus?>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         <div class="container">

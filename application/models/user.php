@@ -3,7 +3,7 @@ Class User extends CI_Model{
 
     function login($email, $password){
         $this -> db -> select('uid, email, password');
-        $this -> db -> from('users');
+        $this -> db -> from('Users');
         $this -> db -> where('email', $email);
         $this -> db -> where('password', MD5($password));
         $this -> db -> limit(1);
