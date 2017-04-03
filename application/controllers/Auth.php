@@ -30,7 +30,7 @@ class Auth extends CI_Controller {
                 $_SESSION['firstname'] = $user->firstname;
                 $_SESSION['lastname'] = $user->lastname;
 
-                redirect("user/profile","refresh");
+                redirect("user/profile","refresh"); //call user controller's profile() function
             } else {
                 $this->session->set_flashdata("error", "Invalid login");
                 redirect("auth/login","refresh");
@@ -46,7 +46,8 @@ class Auth extends CI_Controller {
      */
     public function register(){
         if(isset($_POST['register'])){
-            $this->form_validation->set_rules('username','Username', 'required');
+            $this->form_validation->set_rules('username','Username', 'required|is_unique[users.username]');
+                $this->form_validation->set_message('is_unique', '%s is taken.'); //override message if username is not unique
             $this->form_validation->set_rules('password','Password', 'required|min_length[5]');
             $this->form_validation->set_rules('confirmpass','Confirm Password', 'required|min_length[5]|matches[password]');
             $this->form_validation->set_rules('firstname','FirstName', 'required');
@@ -64,8 +65,8 @@ class Auth extends CI_Controller {
                 //add user to database
                 $this->db->insert('users',$data);
 
-                $this->session->set_flashdata("success","Registered!"); //sets message + $_SESSION['success'] is set
-                redirect("auth/register","refresh");
+                //$this->session->set_flashdata("success","Registered!"); //sets message + $_SESSION['success'] is set
+                redirect("auth/login","refresh");
             }
         }
         $this->load->view("templates/header");

@@ -10,9 +10,14 @@
         <nav class="navbar navbar-inverse navbar-static-top" role="navigation"">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>">BackRoom</a>
+                    <a class="navbar-brand"
+                       href="<?php
+                            if(isset($_SESSION['user_logged'])){
+                                echo base_url()."user/profile";
+                            }else{
+                                echo base_url()."auth/login";
+                            } ?>">BackRoom</a>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#navbar-collapse-1">
-<!--                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">-->
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -28,6 +33,7 @@
                             if(isset($_SESSION['user_logged'])){ //
                                $loginstatus = "Logout";
                                $loc = base_url()."auth/logout";
+                               echo "<li><p class=\"navbar-text\">Welcome ".$_SESSION['firstname']."</p></li>";
                             }else{
                                 $loginstatus = "Login";
                                 $loc = base_url();

@@ -22,7 +22,7 @@ class Home extends CI_Controller {
         {
             echo "<script>console.log('error!');</script>";
             //If no session, redirect to login page
-           // redirect('login', 'refresh');
+            redirect('auth/login', 'refresh');
         }
     }
 
