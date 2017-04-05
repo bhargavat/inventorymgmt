@@ -26,6 +26,7 @@ class Auth extends CI_Controller {
             if (isset($user)) {
                 //$this->session->set_flashdata("success", "Logged in");
                 $_SESSION['user_logged'] = TRUE;
+                $_SESSION['uid'] = $user->uid;
                 $_SESSION['username'] = $user->username;
                 $_SESSION['firstname'] = $user->firstname;
                 $_SESSION['lastname'] = $user->lastname;

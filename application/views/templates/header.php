@@ -4,39 +4,44 @@
         <meta charset="utf-8">
         <title>BackRoom</title>
         <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+        <style> .navbar-toggle{  border: none;  }</style>
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-static-top" role="navigation"">
+        <nav class="navbar navbar-inverse" role="navigation"">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand"
-                       href="<?php
-                            if(isset($_SESSION['user_logged'])){
-                                echo base_url()."user/profile";
-                            }else{
-                                echo base_url()."auth/login";
-                            } ?>">BackRoom</a>
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" aria-expanded="false" data-target="#navbar-collapse-1">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                    <a class="navbar-brand"
+                       href="<?php
+                       if(isset($_SESSION['user_logged'])){ //dynamically change Backroom button location based on login status
+                           echo base_url()."user/profile";
+                       }else{
+                           echo base_url()."auth/login";
+                       } ?>">BackRoom
+                    </a>
                 </div>
-                <div class="collapse navbar-collapse id="navbar-collapse-1">
+                <div class="collapse navbar-collapse" id="navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li><a href="<?php echo base_url(); ?>about">About</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <?php
-                            if(isset($_SESSION['user_logged'])){ //
+                            if(isset($_SESSION['user_logged'])){ //if user is logged in, display logout button
                                $loginstatus = "Logout";
                                $loc = base_url()."auth/logout";
-                               echo "<li><p class=\"navbar-text\">Welcome ".$_SESSION['firstname']."</p></li>";
-                            }else{
+                               echo "<li><p class=\"navbar-text hidden-xs\">
+                                            Welcome ".$_SESSION['firstname']."
+                                         </p>
+                                     </li>";
+                            }else{ //if user logged out, display login button
                                 $loginstatus = "Login";
-                                $loc = base_url();
+                                $loc = base_url()."auth/login";
                             }
                         ?>
                         <li>
