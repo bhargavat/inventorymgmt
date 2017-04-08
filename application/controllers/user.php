@@ -20,4 +20,20 @@ class User extends CI_Controller
         }
         $this->load->view('profile');
     }
+
+    public function trends()
+    {
+        if ($_SESSION['user_logged'] == FALSE) {
+            $this->session->set_flashdata("error", "Please login first to view this page!! ");
+            redirect("auth/login");
+        }
+        $this->load->view('trends');
+    }
+    public function inventory(){
+        if ($_SESSION['user_logged'] == FALSE) {
+            $this->session->set_flashdata("error", "Please login first to view this page!! ");
+            redirect("auth/login");
+        }
+        $this->load->view('trends');
+    }
 }

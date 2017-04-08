@@ -4,7 +4,9 @@
         <meta charset="utf-8">
         <title>BackRoom</title>
         <link rel="stylesheet" href="http://bootswatch.com/flatly/bootstrap.min.css">
-        <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+<!--        <script src="--><?php //echo base_url(); ?><!--assets/js/bootstrap.min.js"></script>-->
+        <script src="<?php echo base_url(); ?>assets/js/jquery-3.2.0.min.js"></script>
         <style> .navbar-toggle{  border: none;  }</style>
     </head>
     <body>
