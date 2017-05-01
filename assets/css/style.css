@@ -6,3 +6,15 @@
 #trend-btn{
     background-color: crimson;
 }
+
+button.addsell {
+    background-color: transparent;
+    border: 1px solid #7fab64;
+    height: 5.5vh;
+}
+button[id="add"]:hover{
+    background: #559948;
+}
+button[id="sell"]:hover{
+    background: #bd000b;
+}

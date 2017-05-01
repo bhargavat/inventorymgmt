@@ -15,8 +15,11 @@ $this->load->view('templates/header');
         <li role="presentation"><a href="<?php echo base_url();?>user/trends">Analysis</a></li>
     </ul>
 </div>
+<br>
 <div>
-    <h2>Items</h2>
+    <?php
+    $this->load->view('templates/list_view');
+    ?>
     <!--Your code here-->
 </div>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
